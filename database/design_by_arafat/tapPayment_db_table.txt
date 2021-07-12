@@ -1,0 +1,8 @@
+1) tap_payments
+    1) id
+    2) charge_id
+    3) tap_reference
+    4) user_id
+    5) created_at
+    6) updated_at
+    7) deleted_at

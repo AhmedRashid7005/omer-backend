@@ -1,0 +1,7 @@
+recharge_cards
+1. id
+2. state
+3. card_number
+4. amount
+5. card_expiry
+6. status (Active, DeActive)

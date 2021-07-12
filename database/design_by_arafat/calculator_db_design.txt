@@ -1,0 +1,38 @@
+
+Calculator Module::
+1. shipping_costs
+		1. delivery_type (international, local_delivery, local_receipt)
+		1. subscriber_package_name_id
+		2. company_name
+		3. shipping_form (List of all country)
+		4. shipping_to (List of All counrry)
+		5. method_type (delivery, receipt)
+		6. method(Radion or Select) ( home_delivery, branch_delivery)
+		7. during_time (text field)
+
+
+2.shipping_cost_weights
+		1. shipping_cost_id
+		2. weight_type (exact_weight, range_weight)
+		3. from
+		4. to
+		5. price_for (per_kg,range)
+		6. price
+
+
+3.calculators::
+1. module_name (commission_fess, insurance, bill_correction, cash_back, pay_later, installment, points)
+2. for (broker, import, auto_parts, protections, gLobal_shipping, local_delivery, receipt, import, bill_correction, cash_back_pay_via, pay_later, installment, points)
+3. subscriber_package_name_id
+4. from
+5. to
+6. amount_type (fixed or Percentage)
+7. amount
+
+
+
+4.advance_payments:
+1. subscriber_package_name_id
+2. order_type (broker, import, auto_parts)
+3. percentage_of_defferred_amount
+4. percentage_added_in_deferred_amount

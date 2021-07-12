@@ -1,0 +1,222 @@
+---------------------------------------------------
++++++++++++     Order Adding   ++++++++++++++
+---------------------------------------------------
+
+** Search Box for Client Seach
+** Show all client list as a Searrrch Result
+** Select a Client
+** Select Order Type
+** Fill up the Order Form
+
+
+orders Table::
+------------------------
+
+Order Form::
+
+1. order_no (5 digit Random Order No)
+2. user_id
+3. order_type (broker, import, auto parts)
+4. Market place input 
+5. Shipping type from option system-radio (local, global) 
+6. from_state_country (if selet local show saudi state, if choise global show all country)
+7. Shipping type from option system-radio (local, global) 
+8. to_state_country (if selet local show saudi state, if choise global show all country)
+9. shipping within
+10. itme quantity
+---------------------------------
+11. other cost name,
+12. other cost value
+++++++++++++++++++++++++++++++++
+can add multiple
+---------------------------------
+
+-------------------------------------------------------------
+13. order Price (Comes from when we add all the products) ** dynamic field, No need to keep it in db **
+14. minimum_pay_type (Fixed or Percentages)
+15. minimum_pay_amount
+
+** The above 3 field are dynamic because if we add more order-product
+on details order or delete any product this filed will change
+so wee need to generate this filed data on run time ..
+A method will do it for us
+
+-------------------------------------------------------------
+
+Calculating Order Amount::
+
+1. total other cost in order
+2. order_product total price (Each product price * quantity)
+3. order_product total_shipping_cost
+4. Product offer calculation is Skipped for now
+------------------------------------------------
+All total Are Order Total
+
+Example: order price 150, if minimum amount 50, client pay 50- if minimum percent 5, client pay 7.5
+------------------------------------------------------------------
+
+order_products Table::
+
+1. order_id
+2. link
+3. name
+4. description
+5. parts_no
+6. parts_side
+7. price
+8. quantity
+9. size
+10. weight
+11. color
+12. shipping_cost
+13. during_time
+14. note
+15. quality
+16. product_type
+17. img (We will use image Module) X
+---------------------------------------------
+
+(+ Add Offer )
+
+order_product_offers 
+(a order product may have one/more offer OR no Offer)
+---------------------------------------------
+1. order_product_id
+2. offer_name
+3. offer_price_type (fixed or Percentage)
+4. offer_price_amount
+5. offer_price_description
+
+
+** When admin End add Product a New Form Popup
+
+order Price (Comes from when we add all the products)
+** minimum_pay_type (Fixed or Percentages)
+** minimum_pay_amount
+
+This form will Update Order Table
+
+---------------------------------------------------
++++++++++++      End Order Adding   ++++++++++++++
+---------------------------------------------------
+
+
+---------------------------------------------------
++++++++++++      Order List   ++++++++++++++
+---------------------------------------------------
+
+Show:: all order data 
+has 
+1. edit
+2. details
+3. delete link
+
+---------------------------------------------------
++++++++++++     End Order List   ++++++++++++++
+---------------------------------------------------
+
+
+---------------------------------------------------
++++++++++++      Order Details   ++++++++++++++
+---------------------------------------------------
+1. show order data details
+2. client data flow that is asked in requiement
+ Client Name+ suite Number + mobile number + email + billing address + package type
+3. show list order product
+		here admin can
+		a. add more order-product To The Order ---> (a new view, controller, model)
+		b. edit order-product ---> (a new view, controller, model)
+		c. details view order product ---> (a new view, controller, model)
+		   here admin can see 
+		   		a. the list of offer
+		   		b. add more offer to the product ---> (a new view, controller, model)
+		   		c. edit offer ---> (a new view, controller, model) 
+		   		d. delete offer
+		d. delete the order-product
+
+---------------------------------------------------
++++++++++++     End Order Details   ++++++++++++++
+---------------------------------------------------
+
+
+---------------------------------------------------
++++++++++++      Order Edit   ++++++++++++++
+---------------------------------------------------
+
+1. can edit all the order fields 
+
+---------------------------------------------------
++++++++++++     End Order Edit   ++++++++++++++
+---------------------------------------------------
+
+---------------------------------------------------
++++++++++++      Order Delete   ++++++++++++++
+---------------------------------------------------
+
+	** Deleteting an order will
+	1. delete all its image
+	2. delete all order product data
+	3. delete every data of each order-product offer (Because it may have more than one Offer or No offer)
+
+---------------------------------------------------
++++++++++++     End Order Delete   ++++++++++++++
+---------------------------------------------------
+
+---------------------------------------------------
++++++++++++     So Total Works Here   ++++++++++++++
+---------------------------------------------------
+
+Migrations:: 
+	1. orders Table
+	2. order_products
+	3. order_product_offers
+
+Model:: (In side it has many more ralation methods and others)
+	1. OrderModel
+	2. OrderProductModel
+	3. OrderProductOfferModel
+
+
+Controller:: (In side it has many more Methods and Helpers)
+	1. OrderController
+	2. OrderProductController
+	3. OrderProductOfferController
+
+Routes::
+	1. OrderController Methods Routes
+	2. OrderProductController Methods Routes
+	3. OrderProductOfferController Methods Routes
+
+Views::
+	1. OrderAdd
+		a. client search ajax with views --> able to select one client
+		b. client select ajax with view ---> fixed the selected client
+		c. order type form
+		d. The Order form
+	2. OrderEdit
+		** Able to edit the added order data **
+	3. OrderDetails
+		a. order details view
+		b. client details view
+		c. list all order product
+			a. add a order-product page
+			b. edit order-product page
+			c. details order-product page
+				a. add new offer to this order-product page
+				b. Edit this offer for order-product
+
+
+---------------------------------------------------
++++++++++++     End So Total Works Here   ++++++++++++++
+---------------------------------------------------
+
+
+Days Calculation::
+
+1. architecture planning, migrations and model --------> (1+1) = 2 days (13 feb ,14 feb)
+2. OrderModule (controller, view, routes) ---------> 2 days  (15 feb, 16 feb)
+3. OrderProductModule (controller, view, routes) ----> 2 days (17 feb, 18 feb)
+4. OrderProductOfferModule (controller, view, routes) --> 2 days (19 feb, 20 feb)
+------------------------------------------
+		Total = 8 days ...(miniumum)
+		(13 Feb 2021 - 20 Feb 2021)

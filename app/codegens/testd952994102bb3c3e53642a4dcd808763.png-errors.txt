@@ -1,0 +1,1 @@
+2021-04-11 11:37:47: imagepng(qrcode_C:\wamp64\www\alwasit.org\app\codegens\temp\testd952994102bb3c3e53642a4dcd808763.png): failed to open stream: No such file or directory2021-04-11 11:39:05: imagepng(qrcode_C:\wamp64\www\alwasit.org\app\codegens\temp\testd952994102bb3c3e53642a4dcd808763.png): failed to open stream: No such file or directory

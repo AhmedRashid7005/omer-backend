@@ -1,0 +1,31 @@
+
+package_statuses
+1. id
+2. package_status
+
+packages
+1. id
+2. package_no (6 digit identity no)
+3. package_status_id
+4. user_id
+5. order_id (Not needed )--> we will asign package_id in the order table
+6. package_to (usa, china, saudi, purchase)
+7. shipping_cost
+8. from
+9. to
+10. tracking_no
+11. weight
+12. note
+13. img (we will use img module) --> no need to use here
+14. other_fees_name: value, (Keep as json),
+15. package_price (comes form package_products All product total price when we will add product to the shipment)
+
+
+package_products
+1. id
+2. package_id
+3. product_name
+4. description
+5. quantity
+6. price
+7. note

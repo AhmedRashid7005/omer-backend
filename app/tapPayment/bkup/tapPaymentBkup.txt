@@ -1,0 +1,104 @@
+<?php
+namespace App\tapPayment;
+require __DIR__.'/vendor/autoload.php';
+use TapPayments\GoSell;
+
+// My api  Test Token
+// arafat.dml@gmail.com
+// arafat api key...
+GoSell::setPrivateKey("sk_test_eDn7uGt1BL096EOiRH3CoXpV");
+
+class TapPayment{
+
+    /**
+     * @date: 18/11/2020
+     * createCharge
+     * @author arafat | arafat.dml@gmail.com
+     * @return this will auto redirect to the
+     * Execute page
+     */
+
+    public function createCharge($redirectUrl, $postUrl){
+
+        $charge = GoSell\Charges::create(
+            [
+              "amount"=> 20,
+              "currency"=> "KWD",
+              // "currency"=> "SAR",
+              "threeDSecure"=> true,
+              "save_card"=> false,
+              "description"=> "Test Description",
+              "statement_descriptor"=> "Sample",
+              "metadata"=> [
+                "udf1"=> "test 1",
+                "udf2"=> "test 2"
+              ],
+              "reference"=> [
+                "transaction"=> "txn_0001",
+                "order"=> "ord_0001"
+              ],
+              "receipt"=> [
+                "email"=> true,
+                "sms"=> true
+              ],
+              "customer"=> [
+                "first_name"=> "test",
+                "middle_name"=> "test",
+                "last_name"=> "test",
+                "email"=> "arafat.dml@gmail.com",
+                "phone"=> [
+                  // "country_code"=> "966",
+                  "number"=> "50000000"
+                ]
+              ],
+              "source"=> [
+                "id"=> "src_all"
+                // "id"=> "src_sa.mada"
+                // "id" => "src_all"
+              ],
+              "post"=> [
+                "url"=> $postUrl
+              ],
+              "redirect"=> [
+                "url"=> $redirectUrl
+              ]
+            ]
+        );
+
+        // dump($charge); //will give charge response as PHP object
+
+        /**
+         *
+         * @date 17/11/2020
+         * @author Arafat.dml@gmail.com
+         * This Piece Of code Is Wtritten By arafat
+         * If we have the Charge Response then We need to
+         * Redirect the user to Make the Payment Execute
+         *
+         */
+
+        if($charge){
+            $executeChargeUrl = $charge->transaction->url;
+            // Now Redirect
+            header("location:".$executeChargeUrl);
+            exit();
+        }
+        // return false;
+    }
+
+    /**
+     * @date: 18/11/2020
+     * @author arafat | arafat.dml@gmail.com
+     * executeCharge
+     * @return This Will Execute the Charge And return information
+     */
+
+    public function executeCharge($chargeId){
+
+        $retrieved_charge = GoSell\Charges::retrieve($chargeId);
+
+        return $retrieved_charge;
+        // dump($retrieved_charge);
+    }
+
+}

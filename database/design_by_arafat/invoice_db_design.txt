@@ -1,0 +1,20 @@
+
+invoice
+1. id
+2. invoice_no
+3. sender_address
+4. receiver_address
+5. order_no
+6. delivery_through
+7. carrier_name
+8. remaining_order_amount
+9. shipping_cost_warehouse
+10. delivery_cost_to_your_address
+11. other_fees_name
+12. other_fees_value
+13. insurence_fee
+14. custom_duities
+15. vat
+16. discount_type
+17. discount_amount
+18. total

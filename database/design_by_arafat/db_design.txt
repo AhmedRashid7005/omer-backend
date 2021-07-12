@@ -1,0 +1,141 @@
+user/customer:
+1) affiliate_link
+2) mem_package
+3) mem_fee
+4) total_client_commission
+5) me_as_a_guest_discount
+6) total_affiliate_num
+
+we will use user table as Customer::
+users::
+1) first_name
+2) last_name
+3) ship_add_1
+4) ship_add_2
+5) ship_country
+6) ship_region
+7) ship_city
+8) ship_phone
+9) ship_postal_code
+10) ship_another_number
+11) bill_same_as_shipping
+12) bill_add_1
+13) bill_add_2
+14) bill_country
+15) bill_region
+16) bill_city
+17) bill_phone
+18) bill_postal_code
+19) bill_another_number
+20) hash
+21) verify_code
+22) verify_time_limit
+23) verify
+24) status
+25) agree_on_term_condition
+26) user_type (user/customer)
+27) is_payment_done --> 0
+28) pay_with
+29) tap_payment_option
+30) is_payment_done
+
+2)affiliate_types
+    1) id
+    2) name
+    3) created_at
+    4) updated_at
+    5) deleted_at
+
+3) affiliate_groups
+    1) id
+    2) affiliate_type_id
+    3) price (here all type client and guest price data will comes)--> text
+    example: affiliate_type_name_id{BASIC_COMMISION_FOR_CLIENT:30.44, BASIC_COMMISION_FOR_GUEST:10%, PREMIUM_COMMISION_FOR_CLIENT:40, PREMIUM_DISOUNCT_FOR_CGUEST:15%, BUSINESS_COMMISION_FOR_CLIENT:50, BUSINESS_DISSOUNT_FOR_GUEST: 20%}
+    4) valid_time_limit (forever/date range)--> varchar
+    5) created_at
+    6) updated_at
+    7) deleted_at
+
+4) affiliate_persons
+    1) id
+    2) name
+    3) email
+    4) identity_num
+    5) affiliate_link
+    6) price(here all type client and guest price data will comes )->text
+    example: affiliate_type_name_id{BASIC_COMMISION_FOR_CLIENT:30.44, BASIC_COMMISION_FOR_GUEST:10%, PREMIUM_COMMISION_FOR_CLIENT:40, PREMIUM_DISOUNCT_FOR_CGUEST:15%, BUSINESS_COMMISION_FOR_CLIENT:50, BUSINESS_DISSOUNT_FOR_GUEST: 20%}
+    7) valid_time_limit (forever/date range)--> varchar
+    8) total_client_commission
+    9) total_affiliate_num
+    10) created_at
+    11) updated_at
+    12) deleted_at
+
+
+5) affiliate_trackings (when a Guest register using the Affiliate link ..)
+(Calculate Everythings Form Here: Price / group affiliate, person Affiliates)
+    1) id
+    2) affiliate_belong_to (client_group/person)
+    3) client_id
+    4) guest_id
+    5) guest_select_package_id
+    6) affiliate_group_id
+    7) affiliate_person_id
+    8) client_commission
+    9) guest_discount
+    10) created_at
+    11) updated_at
+    12) deleted_at
+
+++++++++++++++++++++++++++++++++++++++++
+For Admin
++++++++++++++++++++++++++++++++++++++++
+
+admins::
+id
+first_name
+last_name
+email
+password
+admin_role_id
+phone
+img
+address
+created_at
+deleted_at
+updated_at
+
+admin_roles::
+1) id
+2) name
+3) permission
+4) created_at
+5) updated_at
+6) deleted_at
+
+++++++++++++++++++++++++++++++++++++++++++
+End for Admin
+++++++++++++++++++++++++++++++++++++++++++
+
+
+Client::
+http://localhost/laravel_affiliate_by_arafat/register?affiliate_link=StuartSporer_ZT9qsGXM
+
+macejkovic.thora@hotmail.com
+
+Person::
+http://localhost/laravel_affiliate_by_arafat/register?affiliate_link=shuvoupdate_jtbiVWEb
+
+suit_addresses
+1. id
+2. name 
+3. country
+4. address
+5. state
+6. city
+7. zip_code
+8. house_road_number
+8. phone
+9. status
+10. created_at
+11. updated_at

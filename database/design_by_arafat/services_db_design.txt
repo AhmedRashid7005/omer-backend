@@ -1,0 +1,25 @@
+
+service_type
+1. exact
+2. range
+
+service_for 
+1. image
+2. video
+
+
+image_video_services
+1. id
+2. service_for
+3. service_type
+4. subscriber_package_name_id
+5. from
+6. to
+7. price
+
+other_services
+1. id
+2. subscriber_package_name_id
+3. name
+4. description
+5. price

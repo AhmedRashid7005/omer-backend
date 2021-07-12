@@ -1,0 +1,19 @@
+
+wallet_status::
+1. Available
+2. Required
+3. Pending
+4. Receivables
+5. Withdraw
+6. Points
+7. Used
+
+
+client_group_balance:
+1. id
+2. client_or_group_id
+3. balance_for (client/group)
+4. wallet_status
+5. amount
+6. created_at
+7. updated_at

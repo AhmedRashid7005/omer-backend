@@ -1,0 +1,104 @@
+The first defect: it is not possible to add more than one product in one order
+You mean : 1 Order Contain 1 Product only
+
+
+The second defect: the Offer do not mean the current design, the truth is the same as adding a product model, but this is a by-product related to the main product.
+
+For example, I am sending you a basic offer: a phone with specifications and such price, and two other offers related to the same phone but another company.
+This is repeated with each product addition
+
+discounts* i mean offer
+
+
+This is one order that includes 10 products, for example, the same package system, and some products may contain offers
+
+========================================================
+
+
+1. what I understand now is .. 
+The system I developed
+	-can add more than one Product to an order .
+ 	-And Add One Or More than 1 Offer in a order Product.
+
+ More Details:
+ 	parent: order
+ 		Order-Childs-Products: one or More than One Product
+ 			Order-Product-Child: No Offer, Or One Offer Or More Than One Offer (Here Offer Mean Give Discount or any advantege if SomeOne Buy This)
+
+
+--> It is Wrong.
+
+Correct Is::
+
+One Order only can have One Product.
+And Offer Mean same type of Order with 1 Product
+That We can make a relation ..
+
+Why??
+So that, when we show the Order Product in the Front-end...
+We may able to show some related Order Product with it (using That Relation)
+
+
+
+
+For example, I am sending you a basic offer: a phone with specifications and such price, and two other offers related to the same phone but another company.
+This is repeated with each product addition
+
+
+You mean :
+
+You are sending me a phone 
+For example:
+
+Parent::
+Phone: Nokia
+Model: 220
+price: $300
+
+You can buy Related Phone:
+
+Childs::
+a.
+Phone: Xiami
+Model: 330
+Price: $300
+
+b.
+Phone: Motorolla
+Model: 730
+Price: $310
+
+c.
+Phone: Zte
+Model: 641
+Price: $290
+
+
+-----------------------------------------
+So In the Design I can 
+Add A order and one product
+
+For example:
+
+Phone: Nokia
+Model: 220
+price: $300
+-----------------------------------------
+Then I Can relate the Phone NOKIA 
+With: 
+a. Phone: Xiami
+b. Phone: Motorolla
+c. Phone: Zte
+
+(of Course, First we Need to Create:- a,b,c and then add the Relation with any Parent)
+-----------------------------------
+
+So that in the Front end When We show
+Parent:: Nokia
+It related Other Phone shows off
+Childs::
+a. Phone: Xiami
+b. Phone: Motorolla
+c. Phone: Zte
+
+That's All
